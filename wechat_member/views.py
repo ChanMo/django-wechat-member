@@ -33,6 +33,7 @@ class WxAuth(View):
 
 class WxMemberView(object):
     def dispatch(self, request, *args, **kwargs):
+        super(WxMemberView, self).dispatch(request, *args, **kwargs)
         try:
             member_id = request.session['wx_member']['id']
             wx_member = Member.objects.get(id=member_id)
