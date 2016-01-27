@@ -1,5 +1,5 @@
 =============
-Wechat-Member
+Wechat_Member
 =============
 
 Wechat-member is based django-wechat module.
@@ -15,21 +15,16 @@ Quick start
    INSTALLED_APPS = (
        ...
        'wechat',
-       'wechat-member',
+       'wechat_member',
    )
 
-2. Add "wechat-member.middleware" to your MIDDLEWARE_CLASSES settings like this::
-   MIDDLEWARE_CLASSES = (
-       ...
-       'wechat-member.middleware.CheckLogin',
-   )
-
-3. Add "WECHAT_MEMBER_CHECK_URL" to your settings like this::
-   ...
-   WECHAT_MEMBER_CHECK_URL = "/m/"
-
-4. Include the wechat URLconf in your project urls.py like this::
+2. Include the wechat URLconf in your project urls.py like this::
    url(r'^wechat-member/', include('wechat-member.urls')),
 
-5. Run 'python manage.py migrate' to create the wechat models.
-
+3. Run 'python manage.py migrate' to create the wechat member models.
+4. Use WxMemberView in your views::
+   from member.views import WxMemberView
+   class TestView(WxMemberView):
+       pass
+5. Use wechat member session in your views::
+   self.request.session['wx_member']

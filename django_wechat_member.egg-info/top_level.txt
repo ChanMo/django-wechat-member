@@ -1,1 +1,1 @@
-wechat_member
+wechat-member
