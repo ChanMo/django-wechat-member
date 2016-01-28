@@ -1,1 +1,1 @@
-default_app_config = 'wechat_member.apps.MemberConfig'
+#default_app_config = 'wechat_member.apps.MemberConfig'

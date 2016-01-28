@@ -6,10 +6,10 @@ django_wechat_member.egg-info/PKG-INFO
 django_wechat_member.egg-info/SOURCES.txt
 django_wechat_member.egg-info/dependency_links.txt
 django_wechat_member.egg-info/top_level.txt
-wechat-member/__init__.py
-wechat-member/admin.py
-wechat-member/apps.py
-wechat-member/models.py
-wechat-member/tests.py
-wechat-member/urls.py
-wechat-member/views.py
+wechat_member/__init__.py
+wechat_member/admin.py
+wechat_member/apps.py
+wechat_member/models.py
+wechat_member/tests.py
+wechat_member/urls.py
+wechat_member/views.py
