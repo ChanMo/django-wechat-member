@@ -15,7 +15,7 @@ class Member(models.Model):
         return self.name
 
     def avatar_url(self):
-        return '<a href="%s" target="_blank"><img src="%s" height="50"></a>' % self.avatar
+        return '<a href="%s" target="_blank"><img src="%s" height="50"></a>' % (self.avatar, self.avatar)
 
     class Meta(object):
         verbose_name = '会员'

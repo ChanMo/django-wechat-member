@@ -2,6 +2,6 @@
 # vim: set fileencoding=utf-8 :
 from django.apps import AppConfig
 
-class MemberConfig(AppConfig):
-    name = u'member'
-    verbose_name = u'会员'
+class WechatMemberConfig(AppConfig):
+    name = u'wechat_member'
+    verbose_name = u'微信会员'
