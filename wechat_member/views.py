@@ -34,11 +34,10 @@ class WxAuth(View):
 
 class WxMemberView(View):
     def dispatch(self, request, *args, **kwargs):
-        result = super(WxMemberView, self).dispatch(request, *args, **kwargs)
         try:
             member_id = request.session['wx_member_id']
             self.wx_member = Member.objects.get(id=member_id)
-            return result
+            return super(WxMemberView, self).dispatch(request, *args, **kwargs)
 #        except (KeyError, Member.DoesNotExist):
 #            if settings.WECHAT_MEMBER_DEBUG == True and request.GET['debug'] == True:
 #                wx_member = Member.objects.get(id=1)
