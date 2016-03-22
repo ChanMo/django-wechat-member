@@ -1,6 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.views.generic.base import View
 from django.http import HttpResponseRedirect
+from django.conf import settings
 from wechat import api
 from .models import Member
 
@@ -37,7 +38,24 @@ class WxMemberView(object):
             wx_member = Member.objects.get(id=member_id)
             return super(WxMemberView, self).dispatch(request, *args, **kwargs)
         except (KeyError, Member.DoesNotExist):
+            if settings.WECHAT_MEMBER_DEBUG == True && request.GET['debug'] == True:
+                wx_member = Member.objects.get(id=1)
+                data = {
+                    "id": 1,
+                    "openid": wx_member.openid,
+                    "name": wx_member.name,
+                    "avatar": wx_member.avatar,
+                }
+                request.session['wx_member'] = data
+                return super(WxMemberView, self).dispatch(request, *args, **kwargs)
+            else:
+                return_uri = 'http://' + request.get_host() + reverse('wx_member:auth')
+                wx = api.Member()
+                url = wx.get_code_url(return_uri, request.path)
+                return HttpResponseRedirect(url)
+        except (KeyError, Member.DoesNotExist):
             return_uri = 'http://' + request.get_host() + reverse('wx_member:auth')
             wx = api.Member()
             url = wx.get_code_url(return_uri, request.path)
             return HttpResponseRedirect(url)
+
