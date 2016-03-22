@@ -1,5 +1,5 @@
 from django.core.urlresolvers import reverse
-from django.views.generic.base import View
+from django.views.generic import View
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from wechat import api
@@ -28,31 +28,32 @@ class WxAuth(View):
             "avatar": member.avatar,
         }
         request.session['wx_member'] = data
+        request.session['wx_member_id'] = member.id
         return HttpResponseRedirect(state)
 
 
-class WxMemberView(object):
+class WxMemberView(View):
     def dispatch(self, request, *args, **kwargs):
         try:
-            member_id = request.session['wx_member']['id']
-            wx_member = Member.objects.get(id=member_id)
+            member_id = request.session['wx_member_id']
+            self.wx_member = Member.objects.get(id=member_id)
             return super(WxMemberView, self).dispatch(request, *args, **kwargs)
-        except (KeyError, Member.DoesNotExist):
-            if settings.WECHAT_MEMBER_DEBUG == True and request.GET['debug'] == True:
-                wx_member = Member.objects.get(id=1)
-                data = {
-                    "id": 1,
-                    "openid": wx_member.openid,
-                    "name": wx_member.name,
-                    "avatar": wx_member.avatar,
-                }
-                request.session['wx_member'] = data
-                return super(WxMemberView, self).dispatch(request, *args, **kwargs)
-            else:
-                return_uri = 'http://' + request.get_host() + reverse('wx_member:auth')
-                wx = api.Member()
-                url = wx.get_code_url(return_uri, request.path)
-                return HttpResponseRedirect(url)
+#        except (KeyError, Member.DoesNotExist):
+#            if settings.WECHAT_MEMBER_DEBUG == True and request.GET['debug'] == True:
+#                wx_member = Member.objects.get(id=1)
+#                data = {
+#                    "id": 1,
+#                    "openid": wx_member.openid,
+#                    "name": wx_member.name,
+#                    "avatar": wx_member.avatar,
+#                }
+#                request.session['wx_member'] = data
+#                return super(WxMemberView, self).dispatch(request, *args, **kwargs)
+#            else:
+#                return_uri = 'http://' + request.get_host() + reverse('wx_member:auth')
+#                wx = api.Member()
+#                url = wx.get_code_url(return_uri, request.path)
+#                return HttpResponseRedirect(url)
         except (KeyError, Member.DoesNotExist):
             return_uri = 'http://' + request.get_host() + reverse('wx_member:auth')
             wx = api.Member()
