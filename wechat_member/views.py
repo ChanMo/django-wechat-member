@@ -38,7 +38,7 @@ class WxMemberView(object):
             wx_member = Member.objects.get(id=member_id)
             return super(WxMemberView, self).dispatch(request, *args, **kwargs)
         except (KeyError, Member.DoesNotExist):
-            if settings.WECHAT_MEMBER_DEBUG == True && request.GET['debug'] == True:
+            if settings.WECHAT_MEMBER_DEBUG == True and request.GET['debug'] == True:
                 wx_member = Member.objects.get(id=1)
                 data = {
                     "id": 1,
