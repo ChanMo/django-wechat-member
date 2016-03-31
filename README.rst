@@ -1,14 +1,14 @@
 基于django-wechat的会员模块
 ===========================
 
-基于django和`微信 <http://github.com/ChanMo/django_wechat/>`_ 的会员模块
+基于django和 `微信 <http://github.com/ChanMo/django_wechat/>`_ 的会员模块
 
 快速开始:
 ---------
 
 添加依赖:
 
-    wechat模块的使用方法查看`这里 <http://github.com/ChanMo/django_wechat/>`_ 
+    wechat模块的使用方法查看 `这里 <http://github.com/ChanMo/django_wechat/>`_ 
 
 安装模块:
 
