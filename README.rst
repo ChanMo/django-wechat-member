@@ -1,33 +1,40 @@
-# Wechat_Member
+基于django-wechat的会员模块
+===========================
 
-Wechat_member is based django-wechat module.
-It used for wechat member.
-Include nickname, avatar, city, openid
+基于django和`微信<http://github.com/ChanMo/django_wechat/>`的会员模块
 
-Detailed documentation is in the "docs" directory
+快速开始:
+---------
 
-## Quick start
+添加依赖:
 
-1. Add `wechat_member` to your INSTALLED_APPS setting like this:
-    ```
+    `wechat模块的使用方法查看这里<http://github.com/ChanMo/django_wechat/>`
+
+安装模块:
+.. code-block::
+
+    pip install git+https://github.com/ChanMo/django_wechat_member.git
+
+修改settings.py文件:
+.. code-block::
+
     INSTALLED_APPS = (
         ...
         'wechat',
         'wechat_member',
     )
-    ```
 
-2. Include the wechat_member URLconf in your project urls.py like this:
-   `url(r'^wechat_member/', include('wechat_member.urls')),`
+添加数据表:
+.. code-block::
 
-3. Run `python manage.py migrate` to create the wechat member models.
+    python manage.py migrate
 
-4. Use `WxMemberView` in your views::
-    ```
-    from member.views import WxMemberView
+使用`WxMemberView`和`self.wx_member`:
+.. code-block::
+
+    from wechat_member.views import WxMemberView
+
     class TestView(WxMemberView):
-        pass
-    ```
-
-5. Use wechat member session in your views::
-   `self.request.session['wx_member']`
+        def get_context_data(self, **kwargs):
+            member = self.wx_member
+            pass
