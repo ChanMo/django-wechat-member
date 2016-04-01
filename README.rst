@@ -16,7 +16,7 @@
 
     pip install git+https://github.com/ChanMo/django_wechat_member.git
 
-修改settings.py文件:
+修改 *settings.py* 文件:
 
 .. code-block::
 
@@ -25,6 +25,12 @@
         'wechat',
         'wechat_member',
     )
+
+修改 *urls.py* 文件:
+
+.. code-block::
+
+    url(r'^wx_member/', include('wechat_member.urls', namespace='wx_member')),
 
 添加数据表:
 
