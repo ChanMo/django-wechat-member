@@ -1,0 +1,1 @@
+django-wechat-base>=0.4.4

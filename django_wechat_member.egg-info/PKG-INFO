@@ -1,44 +1,56 @@
 Metadata-Version: 1.1
 Name: django-wechat-member
-Version: 0.1
-Summary: A simple wechat api model.
-Home-page: http://www.findchen.com/
-Author: Chen
+Version: 0.2.1
+Summary: A simple wechat member module.
+Home-page: https://github.com/ChanMo/django_wechat_member
+Author: ChanMo
 Author-email: chen.orange@aliyun.com
 License: BSD License
-Description: # Wechat_Member
+Description: 基于django-wechat的会员模块
+        ===========================
         
-        Wechat_member is based django-wechat module.
-        It used for wechat member.
-        Include nickname, avatar, city, openid
+        基于django和 `微信 <http://github.com/ChanMo/django_wechat/>`_ 的会员模块
         
-        Detailed documentation is in the "docs" directory
+        快速开始:
+        ---------
         
-        ## Quick start
+        添加依赖:
         
-        1. Add `wechat_member` to your INSTALLED_APPS setting like this:
-            ```
+            wechat模块的使用方法查看 `这里 <http://github.com/ChanMo/django_wechat/>`_ 
+        
+        
+        修改 *settings.py* 文件:
+        
+        .. code-block::
+        
             INSTALLED_APPS = (
                 ...
                 'wechat',
                 'wechat_member',
             )
-            ```
         
-        2. Include the wechat_member URLconf in your project urls.py like this:
-           `url(r'^wechat_member/', include('wechat_member.urls')),`
+        修改 *urls.py* 文件:
         
-        3. Run `python manage.py migrate` to create the wechat member models.
+        .. code-block::
         
-        4. Use `WxMemberView` in your views::
-            ```
-            from member.views import WxMemberView
+            url(r'^wx_member/', include('wechat_member.urls', namespace='wx_member')),
+        
+        添加数据表:
+        
+        .. code-block::
+        
+            python manage.py migrate
+        
+        使用 *WxMemberView* 和 *self.wx_member* :
+        
+        .. code-block::
+        
+            from wechat_member.views import WxMemberView
+        
             class TestView(WxMemberView):
-                pass
-            ```
-        
-        5. Use wechat member session in your views::
-           `self.request.session['wx_member']`
+                def get_context_data(self, **kwargs):
+                    member = self.wx_member
+                    pass
         
 Platform: UNKNOWN
 Classifier: Environment :: Web Environment

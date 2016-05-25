@@ -9,14 +9,15 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name = 'django-wechat-member',
-    version = '0.1',
+    version = '0.2.1',
     packages = ['wechat_member'],
+    install_requires = ['django-wechat-base>=0.4.4'],
     include_package_data = True,
     license = 'BSD License',
-    description = 'A simple wechat api model.',
+    description = 'A simple wechat member module.',
     long_description = README,
-    url = 'http://www.findchen.com/',
-    author = 'Chen',
+    url = 'https://github.com/ChanMo/django_wechat_member',
+    author = 'ChanMo',
     author_email = 'chen.orange@aliyun.com',
     classifiers = [
         'Environment :: Web Environment',

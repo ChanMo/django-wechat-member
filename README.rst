@@ -10,11 +10,6 @@
 
     wechat模块的使用方法查看 `这里 <http://github.com/ChanMo/django_wechat/>`_ 
 
-安装模块:
-
-.. code-block::
-
-    pip install git+https://github.com/ChanMo/django_wechat_member.git
 
 修改 *settings.py* 文件:
 
