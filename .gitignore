@@ -7,3 +7,6 @@
 # scss cache files
 *.css.map
 **/.sass-cache
+
+build/
+django_wechat_member.egg-info/

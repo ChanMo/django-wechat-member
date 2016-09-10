@@ -13,11 +13,12 @@ class Member(models.Model):
         return self.name
 
     def avatar_url(self):
-        return '<a href="%s" target="_blank"><img src="%s" height="50"></a>' % (self.avatar, self.avatar)
+        return '<a href="%s"><img src="%s" height="30"></a>'\
+                % (self.avatar, self.avatar)
 
     class Meta(object):
         verbose_name = _('wechat member')
         verbose_name_plural = _('wechat member')
 
     avatar_url.allow_tags = True
-    avatar_url.verbose_name= _('avatar')
+    avatar_url.short_description= _('avatar')

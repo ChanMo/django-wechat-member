@@ -6,11 +6,15 @@ from wechat import api
 from .models import Member
 
 class WxAuth(View):
+    """
+    get wechat user info
+    """
     def get(self, request, *args, **kwargs):
+        wx = api.Member()
         code = request.GET['code']
         state = request.GET['state']
-        wx = api.Member()
         info = wx.get_user_info(code)
+
         try:
             member = Member.objects.get(openid=info['openid'])
         except Member.DoesNotExist:
@@ -21,6 +25,7 @@ class WxAuth(View):
                 city = info['city'],
             )
         member.save()
+
         data = {
             "id": member.id,
             "openid": member.openid,
@@ -33,6 +38,9 @@ class WxAuth(View):
 
 
 class WxMemberView(View):
+    """
+    Wechat member base view
+    """
     def dispatch(self, request, *args, **kwargs):
         try:
             member_id = request.session['wx_member_id']

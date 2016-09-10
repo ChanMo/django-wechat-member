@@ -1,8 +1,8 @@
 Metadata-Version: 1.1
 Name: django-wechat-member
-Version: 0.2.1
-Summary: A simple wechat member module.
-Home-page: https://github.com/ChanMo/django_wechat_member
+Version: 0.2.3
+Summary: add city to member list, change avatar_url name
+Home-page: https://github.com/ChanMo/django-wechat-member
 Author: ChanMo
 Author-email: chen.orange@aliyun.com
 License: BSD License

@@ -14,3 +14,5 @@ wechat_member/models.py
 wechat_member/tests.py
 wechat_member/urls.py
 wechat_member/views.py
+wechat_member/locale/zh_Hans/LC_MESSAGES/django.mo
+wechat_member/locale/zh_Hans/LC_MESSAGES/django.po
