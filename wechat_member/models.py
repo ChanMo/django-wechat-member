@@ -12,6 +12,9 @@ class Member(models.Model):
     def __unicode__(self):
         return self.name
 
+    def __str__(self):
+        return self.name
+
     def avatar_url(self):
         return '<a href="%s"><img src="%s" height="30"></a>'\
                 % (self.avatar, self.avatar)
