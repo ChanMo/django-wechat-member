@@ -1,20 +1,21 @@
-import os
 from setuptools import setup
+from os import path
+from codecs import open
 
-with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
+here = path.abspath(path.dirname(__file__))
+
+with open(path.join(here, 'README.rst'), encoding='utf-8') as readme:
     README = readme.read()
 
-# allow setup.py to be run from any path
-os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name = 'django-wechat-member',
-    version = '0.2.3',
+    version = '0.3.3',
     packages = ['wechat_member'],
-    install_requires = ['django-wechat-base>=0.4.4'],
+    install_requires = ['django-wechat-base'],
     include_package_data = True,
     license = 'BSD License',
-    description = 'add city to member list, change avatar_url name',
+    description = 'fixed api urllib error',
     long_description = README,
     url = 'https://github.com/ChanMo/django-wechat-member',
     author = 'ChanMo',
