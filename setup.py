@@ -10,12 +10,12 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as readme:
 
 setup(
     name = 'django-wechat-member',
-    version = '0.3.3',
+    version = '0.3.5',
     packages = ['wechat_member'],
     install_requires = ['django-wechat-base'],
     include_package_data = True,
     license = 'BSD License',
-    description = 'fixed api urllib error',
+    description = 'fixed admin avatar error',
     long_description = README,
     url = 'https://github.com/ChanMo/django-wechat-member',
     author = 'ChanMo',

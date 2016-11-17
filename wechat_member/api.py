@@ -1,6 +1,9 @@
-import urllib
-from wechat.api import Base
+from __future__ import unicode_literals
+from future.standard_library import install_aliases
+install_aliases()
 
+from urllib.parse import quote
+from wechat.api import Base
 
 class Member(Base):
     """
@@ -9,7 +12,7 @@ class Member(Base):
 
     def get_code_url(self, redirect_uri, state):
         """Get code url"""
-        redirect_uri = urllib.parse.quote(redirect_uri, safe='')
+        redirect_uri = quote(redirect_uri, safe='')
         # #becase error sorting...
         # url = 'https://open.weixin.qq.com/connect/oauth2/authorize'
         # param = {
@@ -48,5 +51,3 @@ class Member(Base):
         url = self.get_url(url, param)
         result = self.get_data(url)
         return result
-
-

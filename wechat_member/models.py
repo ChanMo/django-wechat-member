@@ -18,7 +18,7 @@ class Member(models.Model):
 
     def avatar_url(self):
         return format_html(
-            '<a href="#{}"><img src="#{}" height="30"></a>',
+            '<a href="{}"><img src="{}" height="30"></a>',
             self.avatar,
             self.avatar,
         )
